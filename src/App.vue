@@ -1,6 +1,7 @@
 <template>
   <div class="app">
-    <MenuButton class="menu-button" />
+    <MenuButton class="menu-button" @toggle="toggleMenu" />
+    <Menu v-model="isOpenMenu" />
     <router-view/>
   </div>
 </template>
@@ -10,7 +11,20 @@ import MenuButton from '@/components/MenuButton.vue'
 
 export default {
   components: {
-    MenuButton
+    MenuButton,
+    Menu: () => import('@/components/Menu.vue')
+  },
+
+  data () {
+    return {
+      isOpenMenu: false
+    }
+  },
+
+  methods: {
+    toggleMenu (value) {
+      this.isOpenMenu = value
+    }
   }
 }
 </script>
@@ -23,8 +37,8 @@ body {
 }
 
 .app {
-  background: radial-gradient(#00003a, #000);
-  background: radial-gradient(#0b1427, #0b101e);
+  background: radial-gradient(rgb(0, 0, 30), rgb(0, 0, 0));
+  /* background: radial-gradient(#0b1427, #0b101e); */
   min-height: 100vh;
   display: flex;
 }

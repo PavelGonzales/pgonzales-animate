@@ -1,7 +1,7 @@
 <template>
   <button
-    :class="['menu', 'reset-button', {'active': isActive}]"
-    @click="toggleMenu"
+    class="menu reset-button"
+    @click="openMenu"
     @mouseenter="play"
     @mouseleave="reverse"
   >
@@ -13,31 +13,30 @@
 </template>
 
 <script>
-import { TimelineLite } from 'gsap'
+import { TimelineLite, Power0 } from 'gsap'
 
 export default {
-  name: 'HelloWorld',
+  name: 'MenuButton',
 
   data () {
     return {
-      isActive: false,
       tl: new TimelineLite({ paused: true })
     }
   },
 
   mounted () {
     this.tl
-      .to('.first', { duration: 0.3, y: 0 }, 0)
-      .to('.first', { duration: 0.3, x: -10, opacity: 0 }, 0.3)
-      .to('.center', { duration: 0.3, opacity: 0 }, 0.3)
-      .to('.last', { duration: 0.3, y: 0 }, 0)
-      .to('.last', { duration: 0.3, x: 10, opacity: 0 }, 0.3)
-      .fromTo('.text', { opacity: 0, scaleY: 0 }, { duration: 0.3, opacity: 1, scaleY: 1 }, 0.4)
+      .to('.first', { duration: 0.15, y: 0, ease: Power0.easeOut }, 0)
+      .to('.first', { duration: 0.15, x: -10, opacity: 0, ease: Power0.easeIn }, 0.15)
+      .to('.center', { duration: 0.15, opacity: 0, ease: Power0.easeIn }, 0.15)
+      .to('.last', { duration: 0.15, y: 0, ease: Power0.easeOut }, 0)
+      .to('.last', { duration: 0.15, x: 10, opacity: 0, ease: Power0.easeIn }, 0.15)
+      .fromTo('.text', { opacity: 0, scaleY: 0 }, { duration: 0.15, opacity: 1, scaleY: 1, ease: Power0.easeIn }, 0.15)
   },
 
   methods: {
-    toggleMenu () {
-      this.isActive = !this.isActive
+    openMenu () {
+      this.$emit('toggle', true)
     },
 
     play () {
