@@ -9,7 +9,10 @@
 
     <h1 class="title" ref="title">Pavel Gonzales</h1>
     <div ref="button">
-      <Button>Read resume</Button>
+      <Button @click="openResume">Read resume</Button>
+    </div>
+    <div class="resume-wrap" ref="resumeWrap">
+      <Resume @close="closeResume" />
     </div>
   </div>
 </template>
@@ -19,6 +22,7 @@
 import { TimelineMax, TweenLite, Linear, Power4 } from 'gsap'
 import VideoBackground from '@/components/VideoBackground.vue'
 import Button from '@/components/Button.vue'
+import Resume from '@/components/Resume.vue'
 
 export default {
   mounted () {
@@ -29,6 +33,12 @@ export default {
       .from(this.$refs.title, 3, { opacity: 0, y: -20, ease: Power4.easeOut }, 1.5)
       .from(this.$refs.button, 3, { opacity: 0, y: 30, ease: Power4.easeOut }, 1.5)
 
+    this.tlResume
+      .to(this.$refs.border, 1.4, { borderWidth: borderSize + 2, scale: 1.04, ease: Power4.easeOut }, 0.1)
+      .to(this.$refs.title, 1, { opacity: 0, y: -20, ease: Power4.easeOut }, 0)
+      .to(this.$refs.button, 1, { opacity: 0, y: 30, ease: Power4.easeOut }, 0)
+      .from(this.$refs.resumeWrap, 1, { autoAlpha: 0, y: 30 }, 1)
+
     setTimeout(() => {
       this.tlEntry.play()
     }, 300) 
@@ -37,7 +47,7 @@ export default {
   data () {
     return {
       tlEntry: new TimelineMax({ paused: true }),
-      tlButton: new TimelineMax({ paused: true }),
+      tlResume: new TimelineMax({ paused: true }),
       videos: [
         // [
         //   {
@@ -76,7 +86,20 @@ export default {
   },
   components: {
     VideoBackground,
-    Button
+    Button,
+    Resume
+  },
+
+  methods: {
+    openResume () {
+      console.log('openResume')
+      this.tlResume.play()
+    },
+
+    closeResume () {
+      console.log('closeResume')
+      this.tlResume.reverse()
+    }
   }
 }
 </script>
@@ -118,5 +141,14 @@ body {
   width: 100%;
   margin: 0;
   letter-spacing: 0.12em;
+}
+
+.resume-wrap {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 </style>

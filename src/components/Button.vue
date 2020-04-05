@@ -4,6 +4,7 @@
     ref="button"
     @mouseenter="hover"
     @mouseleave="blur"
+    @click="$emit('click')"
   >
     <div class="border" ref="border" />
     <div class="background" ref="background" />
