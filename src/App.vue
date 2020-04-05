@@ -8,12 +8,9 @@
     />
 
     <h1 class="title" ref="title">Pavel Gonzales</h1>
-    <button
-      class="button from-center"
-      ref="button"
-    >
-      Read resume
-    </button>
+    <div ref="button">
+      <Button>Read resume</Button>
+    </div>
   </div>
 </template>
 
@@ -21,6 +18,7 @@
 /* eslint-disable */
 import { TimelineMax, TweenLite, Linear, Power4 } from 'gsap'
 import VideoBackground from '@/components/VideoBackground.vue'
+import Button from '@/components/Button.vue'
 
 export default {
   mounted () {
@@ -77,7 +75,8 @@ export default {
     }
   },
   components: {
-    VideoBackground
+    VideoBackground,
+    Button
   }
 }
 </script>
@@ -119,95 +118,5 @@ body {
   width: 100%;
   margin: 0;
   letter-spacing: 0.12em;
-}
-
-.button {
-  border: none;
-  margin: 0;
-  width: auto;
-  overflow: visible;
-  /* inherit font & color from ancestor */
-  font: inherit;
-  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
-  line-height: normal;
-  /* Corrects font smoothing for webkit */
-  -webkit-font-smoothing: inherit;
-  -moz-osx-font-smoothing: inherit;
-  /* Corrects inability to style clickable `input` types in iOS */
-  -webkit-appearance: none;
-  text-align: inherit;
-  outline: none;
-  border-radius: 0;
-
-  background-color: transparent;
-  font-weight: 600;
-  box-sizing: border-box;
-
-  position: relative;	
-	padding: 1.4rem 4.2rem;
-	padding-right: 3.1rem;
-	font-size: 1.4rem;
-	color: #fff;
-	letter-spacing: 1.1rem;
-	text-transform: uppercase;
-	transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1);	
-	cursor: pointer;
-	user-select: none;
-}
-
-.button:before, .button:after {
-	content: '';
-	position: absolute;	
-	transition: inherit;
-	z-index: -1;
-}
-
-.button:hover {
-	color: var(--def);
-	transition-delay: .5s;
-}
-
-.button:hover:before {
-	transition-delay: 0s;
-}
-
-.button:hover:after {
-	background: #fff;
-	transition-delay: .35s;
-}
-
-/* From center */
-
-.from-center:before {
-	top: 0;
-	left: 50%;
-	height: 100%;
-	width: 0;
-	border: 1px solid #fff;
-	border-left: 0;
-	border-right: 0;
-}
-
-.from-center:after {
-	bottom: 0;
-	left: 0;
-	height: 0;
-	width: 100%;
-	background: #fff;
-}
-
-.from-center:hover:before {
-	left: 0;
-	width: 100%;
-}
-
-.from-center:hover:after {
-	top: 0;
-	height: 100%;
-}
-
-body {
-	--def: #96B7C4; 	
-	--inv: #fff;
 }
 </style>
