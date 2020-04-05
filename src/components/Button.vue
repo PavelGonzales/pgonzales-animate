@@ -79,7 +79,6 @@ export default {
   letter-spacing: 0.7em;
   text-transform: uppercase;
   /* transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1); */
-  cursor: pointer;
   user-select: none;
 }
 

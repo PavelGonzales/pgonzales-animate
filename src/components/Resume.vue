@@ -1,34 +1,32 @@
 <template>
-  <div class="root">
+  <div class="root rootWraper" ref="resume">
     <button @click="$emit('close')">close</button>
-    <main class="content">
-      <section class="section_UIxpl">
-        <div class="root_1I--j">
-          <h1 class="headTitle_32ykf" style="font-size: 5rem;">Обо мне</h1>
-        </div>
-        <article>
-          <picture class="avatar_2sxOv">
-            <source srcset="/_nuxt/img/fb3e05b.webp" type="image/webp" class="avatarSource_1gigN">
-            <source srcset="/_nuxt/img/90ac498.jpg" type="image/jpeg" class="avatarSource_1gigN"> <img
-              src="/_nuxt/img/90ac498.jpg" alt="Pavel Gonzales Avatar" class="avatarSource_1gigN"></picture>
-          <p class="paragraph_2RJIC">Я программист-самоучка. Вошел в разработку в 2013, активно начал заниматься с 2015.
+    <main class="content contentScrollable">
+      <section class="section">
+        <article class="about-article">
+          <picture class="avatar">
+            <source srcset="./../assets/ava_2.jpg" type="image/jpeg" class="avatar-source" />
+            <img src="./../assets/ava_2.jpg" alt="Pavel Gonzales Avatar" class="avatar-source" />
+          </picture>
+          <h1 class="head-title">Обо мне</h1>
+          <p class="paragraph">Я программист-самоучка. Вошел в разработку в 2013, активно начал заниматься с 2015.
           </p>
-          <p class="paragraph_2RJIC">В 2013 окончил курсы по web-дизайну. После этого немного фрилансил. Затем был
+          <p class="paragraph">В 2013 окончил курсы по web-дизайну. После этого немного фрилансил. Затем был
             перерыв на 2 года.</p>
-          <p class="paragraph_2RJIC">В 2015 меня взяли младшим разработчиком в Beta Digital Production, где я сильно
+          <p class="paragraph">В 2015 меня взяли младшим разработчиком в Beta Digital Production, где я сильно
             вырос. Получил опыт проектирования интерфейсов, приобрел чувство стиля в сайтах, научился чувствовать
             анимацию.</p>
-          <p class="paragraph_2RJIC">В 2018 я перешел работать в OZON. На тот момент он переезжал на новые рельсы. И я в
+          <p class="paragraph">В 2018 я перешел работать в OZON. На тот момент он переезжал на новые рельсы. И я в
             участвовал в переезде с самого начала. Приобрел опыт продуктовой разработки больших и запутанных систем.
             Понял как происходит разработка с кучей зависимостей и согласований.</p>
-          <p class="paragraph_2RJIC">В разные моменты жизни пытался запустить запустить свои проекты. На последнем проекте
+          <p class="paragraph">В разные моменты жизни пытался запустить запустить свои проекты. На последнем проекте
             спроектировал интерфейс, спроектировал базу, написал бэкенд на node, фронт на vue, задеплоил все на хостинге.
             Получил представление и опыт о полном цикле разработки.</p>
-          <p class="paragraph_2RJIC">Куда хочу двигаться?<br>Последнее время все больше начал смотреть в сторону
+          <p class="paragraph">Куда хочу двигаться?<br>Последнее время все больше начал смотреть в сторону
             управления. Хочется продумывать и развивать продукты. Планирую дальше расти как технический менеджер.</p>
         </article>
       </section>
-      <section class="section_UIxpl">
+      <!-- <section class="section">
         <h2 class="title_2Tolj boxedTitle_2clbp">Опыт работы</h2>
         <div class="root_wiiSH expanded_tqA7U">
           <div class="aboutJob_2Qdje undefined">
@@ -94,58 +92,10 @@
             </ul>
           </div>
         </div>
-        <div class="root_wiiSH expanded_tqA7U">
-          <div class="aboutJob_2Qdje undefined">
-            <picture class="logo_OjICu">
-              <source srcset="/_nuxt/img/8dc4ad8.webp" type="image/webp" class="logoSource_Vq2Ej">
-              <source srcset="/_nuxt/img/2e6c94c.png" type="image/jpeg" class="logoSource_Vq2Ej"> <img
-                src="/_nuxt/img/2e6c94c.png" alt="job.companyName" class="logoSource_Vq2Ej"></picture> <a
-              href="https://webreceptor.ru" target="_blank" class="companyName_1LDyR companyLink_1KTqd">
-              Webreceptor
-            </a>
-            <h5>Digital-агентство</h5>
-            <p>Москва</p>
-            <p>HTML - Верстальщик / менеджер проектов</p>
-            <p>Апрель 2016 — Июнь 2016 (3 месяца)</p> <button class="expandButton_--VJ-">less</button>
-          </div>
-          <div class="expandBlock_1dhjg"><strong class="title_Rgo3t">Достижения:</strong><br>
-            <ul>
-              <li>Верстал сайты</li>
-              <li>Вызванивал вечно недоступных фрилансеров и спрашивал статус работы</li>
-              <li>Ставил задачи фрилансерам</li>
-            </ul> <strong class="title_Rgo3t">Обязанности:</strong>
-            <ul>
-              <li>Верстка небольших сайтов</li>
-              <li>Управление удаленными разработчиками </li>
-              <li>Переговоры с заказчиками</li>
-            </ul>
-          </div>
-        </div>
-        <div class="root_wiiSH expanded_tqA7U">
-          <div class="aboutJob_2Qdje">
-            <!----> <span target="_blank" class="companyName_1LDyR">
-              IeTi
-            </span>
-            <h5></h5>
-            <p>Россия, Севастополь</p>
-            <p>html-верстальщик</p>
-            <p>Ноябрь 2015 — Январь 2016 (3 месяца)</p> <button class="expandButton_--VJ-">less</button>
-          </div>
-          <div class="expandBlock_1dhjg"><strong class="title_Rgo3t">Достижения:</strong><br>
-            <ul>
-              <li>Верстал дэндинги</li>
-              <li>Познавал JavaScript и jQuery</li>
-            </ul> <strong class="title_Rgo3t">Обязанности:</strong>
-            <ul>
-              <li>Верстка макетов из PSD</li>
-              <li>Работа со скриптами jQuery</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      <section class="section_UIxpl">
+      </section> -->
+      <!-- <section class="section">
         <h2 class="title_2Tolj boxedTitle_2clbp">Навыки</h2>
-        <!-- <div class="skills_268Hb">
+        <div class="skills_268Hb">
           <picture class="skillLogo_2Jh-o">
             <source srcset="/_nuxt/img/b1a3655.webp" type="image/webp" class="skillLogoSource_2NLiL">
             <source srcset="/_nuxt/img/048995b.png" type="image/jpeg" class="skillLogoSource_2NLiL"> <img
@@ -197,9 +147,9 @@
             <source srcset="/_nuxt/img/07797d3.png" type="image/jpeg" class="skillLogoSource_2NLiL"> <img
               src="/_nuxt/img/07797d3.png" alt="gulp" class="skillLogoSource_2NLiL"></picture> <img
             src="/_nuxt/img/0659657.svg" alt="bootstrap" class="skillLogo_2Jh-o">
-        </div> -->
-      </section>
-      <section class="section_UIxpl">
+        </div>
+      </section> -->
+      <section class="section">
         <h2 class="title_2Tolj boxedTitle_2clbp">Контакты</h2>
         <ul>
           <li class="item_bvNfq"><a href="mailto:develop.gonzales@gmail.com" target="_blank">
@@ -233,18 +183,22 @@
 </template>
 
 <script>
-import { TimelineMax, Power4 } from 'gsap'
+/* eslint-disable */
+import { TimelineMax, TweenLite, Power4 } from 'gsap'
+// import { SmoothScroll } from './../helpers/SmoothScroll'
 
 export default {
   name: 'Resume',
 
   data () {
     return {
+      betterScroll: null,
       tlButton: new TimelineMax({ paused: true })
     }
   },
 
   mounted () {
+    // new SmoothScroll()
     this.tlButton
       .to(this.$refs.border, 0.5, { scaleX: 1, ease: Power4.easeOut }, 0)
       .to(this.$refs.background, 0.5, { scaleY: 1, ease: Power4.easeOut }, 0.2)
@@ -268,14 +222,51 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   z-index: 1;
   background-color: #fff;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 .content {
   padding: 50px 16px;
+}
+
+.resumeContent {
+  position: absolute;
+  top: 0px;
+}
+
+.avatar {
+  width: calc(50vw - 32px);
+  height: calc(50vw - 32px);
+  display: block;
+  float: left;
+  margin-right: -16px;
+}
+
+.avatar-source {
+  width: 100%;
+  height: 100%;
+}
+
+.head-title {
+  font-size: 100px;
+  margin: 0;
+}
+
+.about-article {
+  position: relative;
+}
+
+.section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.paragraph {
+  font-size: 24px;
+  text-shadow: 1px 1px 2px #fff;
 }
 </style>

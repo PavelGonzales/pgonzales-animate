@@ -1,5 +1,6 @@
 <template>
   <div class="app">
+    <div class="cursor" ref="cursor" />
     <div class="border" ref="border" />
     <VideoBackground
       v-for="(sources, index) in videos"
@@ -26,6 +27,13 @@ import Resume from '@/components/Resume.vue'
 
 export default {
   mounted () {
+    TweenLite.set(this.$refs.cursor, {
+      xPercent: -50,
+      yPercent: -50
+    });
+
+    window.addEventListener("mousemove", this.moveCircle);
+
     const borderSize = Math.min(window.innerWidth - 30, window.innerHeight - 30) / 2
     const speed = 2 // sec
     this.tlEntry
@@ -99,16 +107,27 @@ export default {
     closeResume () {
       console.log('closeResume')
       this.tlResume.reverse()
+    },
+
+    moveCircle(e) {
+      TweenLite.to(this.$refs.cursor, 0.3, {
+        x: e.clientX,
+        y: e.clientY
+      });
     }
   }
 }
 </script>
 <style>
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Cormorant Infant', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
+}
+
+* {
+  cursor: none;
 }
 
 .app {
@@ -150,5 +169,19 @@ body {
   top: 0;
   left: 0;
   z-index: 1;
+}
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #000;
+  z-index: 1000;
+  opacity: 0.5;
 }
 </style>
