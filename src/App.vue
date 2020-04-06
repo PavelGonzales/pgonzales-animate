@@ -1,7 +1,12 @@
 <template>
   <div class="app">
     <div class="cursor" ref="cursor" />
-    <div class="border" ref="border" />
+    <div class="border" ref="border">
+      <div class="border-top" ref="border-top" />
+      <div class="border-bottom" ref="border-bottom" />
+      <div class="border-left" ref="border-left" />
+      <div class="border-right" ref="border-right" />
+    </div>
     <VideoBackground
       v-for="(sources, index) in videos"
       :key="`video-${index}`"
@@ -10,7 +15,7 @@
 
     <h1 class="title" ref="title">Pavel Gonzales</h1>
     <div ref="button">
-      <Button @click="openResume">Read resume</Button>
+      <Button @click="openResume">About</Button>
     </div>
     <div class="resume-wrap" ref="resumeWrap">
       <Resume @close="closeResume" />
@@ -34,18 +39,29 @@ export default {
 
     window.addEventListener("mousemove", this.moveCircle);
 
-    const borderSize = Math.min(window.innerWidth - 30, window.innerHeight - 30) / 2
+    const borderSizeY = window.innerHeight / 25 / 2
+    const borderSizeX = window.innerWidth / 25 / 2
+    const borderScaleX = window.innerWidth / (window.innerWidth - 30)
+    const borderScaleY = window.innerHeight / (window.innerHeight - 30)
     const speed = 2 // sec
+
     this.tlEntry
-      .from(this.$refs.border, speed, { borderWidth: borderSize, scale: 1.04, ease: Power4.easeOut }, 0)
+      .from(this.$refs['border-top'], speed, { y: -15, scaleY: borderSizeY, scaleX: borderScaleX, ease: Power4.easeOut }, 0)
+      .from(this.$refs['border-bottom'], speed, { y: 15, scaleY: borderSizeY, scaleX: borderScaleX, ease: Power4.easeOut }, 0)
+      .from(this.$refs['border-left'], speed, { x: -15, scaleX: borderSizeX, scaleY: borderScaleY, ease: Power4.easeOut }, 0)
+      .from(this.$refs['border-right'], speed, { x: 15, scaleX: borderSizeX, scaleY: borderScaleY, ease: Power4.easeOut }, 0)
+
       .from(this.$refs.title, 3, { opacity: 0, y: -20, ease: Power4.easeOut }, 1.5)
       .from(this.$refs.button, 3, { opacity: 0, y: 30, ease: Power4.easeOut }, 1.5)
 
     this.tlResume
-      .to(this.$refs.border, 1.4, { borderWidth: borderSize + 2, scale: 1.04, ease: Power4.easeOut }, 0.1)
+      // .to(this.$refs['border-top'], speed, { scaleY: borderSizeY, ease: Power4.easeOut }, 0)
+      .to(this.$refs['border-bottom'], 1.3, { scaleY: (window.innerHeight - 30) / 25, ease: Power4.easeOut }, 0)
+      // .to(this.$refs['border-left'], speed, { scaleX: borderSizeX, ease: Power4.easeOut }, 0)
+      // .to(this.$refs['border-right'], speed, { scaleX: borderSizeX, ease: Power4.easeOut }, 0)
       .to(this.$refs.title, 1, { opacity: 0, y: -20, ease: Power4.easeOut }, 0)
       .to(this.$refs.button, 1, { opacity: 0, y: 30, ease: Power4.easeOut }, 0)
-      .from(this.$refs.resumeWrap, 1, { autoAlpha: 0, y: 30 }, 1)
+      .from(this.$refs.resumeWrap, 1, { autoAlpha: 0, y: 30 }, 0.5)
 
     setTimeout(() => {
       this.tlEntry.play()
@@ -141,14 +157,55 @@ body {
 
 .border {
   position: absolute;
-  top: 15px;
-  left: 15px;
-  width: calc(100% - 30px);
-  height: calc(100% - 30px);
-  border: 25px solid #fff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 1;
-  box-sizing: border-box;
   pointer-events: none;
+}
+
+.border-top,
+.border-bottom,
+.border-left,
+.border-right {
+  position: absolute;
+  background-color: #fff;
+}
+
+.border-top,
+.border-bottom {
+  height: 25px;
+  width: calc(100% - 30px);
+  left: 15px;
+}
+
+.border-left,
+.border-right {
+  width: 25px;
+  height: calc(100% - 30px);
+  top: 15px;
+}
+
+.border-top {
+  top: 15px;
+  transform-origin: top center;
+}
+
+.border-bottom {
+  bottom: 15px;
+  transform-origin: bottom center;
+  z-index: 1;
+}
+
+.border-left {
+  left: 15px;
+  transform-origin: center left;
+}
+
+.border-right {
+  right: 15px;
+  transform-origin: center right;
 }
 
 .title {
